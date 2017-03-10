@@ -14,8 +14,8 @@ module.exports = (app)=>{
     pagamento.id = id;
     pagamento.status = "CANCELADO";
 
-    var connection = app.persistencia.connectionFactory();
-    var pagamentoDAO = new app.persistencia.PagamentoDAO(connection);
+    var connection = app.persistence.connectionFactory();
+    var pagamentoDAO = new app.persistence.PagamentoDAO(connection);
 
     pagamentoDAO.atualiza(pagamento, (err)=>{
 
@@ -40,8 +40,8 @@ module.exports = (app)=>{
     pagamento.id = id;
     pagamento.status = "CONFIRMADO";
 
-    var connection = app.persistencia.connectionFactory();
-    var pagamentoDAO = new app.persistencia.PagamentoDAO(connection);
+    var connection = app.persistence.connectionFactory();
+    var pagamentoDAO = new app.persistence.PagamentoDAO(connection);
 
     pagamentoDAO.atualiza(pagamento, (err)=>{
 
@@ -71,8 +71,8 @@ module.exports = (app)=>{
 
       //  console.log('MISS - chave nao encontrada');
 
-        var connection = app.persistencia.connectionFactory();
-        var pagamentoDAO = new app.persistencia.PagamentoDAO(connection);
+        var connection = app.persistence.connectionFactory();
+        var pagamentoDAO = new app.persistence.PagamentoDAO(connection);
 
         pagamentoDAO.buscaPorId(id, (err,result)=>{
           if(err){
@@ -114,8 +114,8 @@ module.exports = (app)=>{
     pagamento.status = 'CRIADO';
     pagamento.data = new Date;
 
-    var connection = app.persistencia.connectionFactory();
-    var pagamentoDAO = new app.persistencia.PagamentoDAO(connection);
+    var connection = app.persistence.connectionFactory();
+    var pagamentoDAO = new app.persistence.PagamentoDAO(connection);
 
     pagamentoDAO.salva(pagamento, (err, result)=>{
 
@@ -134,7 +134,7 @@ module.exports = (app)=>{
         if(pagamento.forma_de_pagamento == 'cartao'){
           var cartao = req.body["cartao"];
 
-          var clienteCartoes = new app.servicos.clientCartoes();
+          var clienteCartoes = new app.services.clientCartoes();
 
           clienteCartoes.autoriza(cartao, (error,request,response,results)=>{
 

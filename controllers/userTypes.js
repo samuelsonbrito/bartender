@@ -11,8 +11,8 @@ module.exports = (app)=>{
             return;
         }
 
-        var connection = app.persistencia.connectionFactory();
-        var userTypeDAO = new app.persistencia.UserTypeDAO(connection);
+        var connection = app.persistence.connectionFactory();
+        var userTypeDAO = new app.persistence.UserTypeDAO(connection);
 
         var dados = req.body;
         dados.status =  'criado';

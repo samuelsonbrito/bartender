@@ -24,8 +24,8 @@ module.exports = function() {
 
   consign() //fazer o uso do autoload
   .include('controllers')
-  .then('persistencia')
-  .then('servicos')
+  .then('persistence')
+  .then('services')
   .into(app);
 
   return app;

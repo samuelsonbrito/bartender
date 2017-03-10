@@ -5,7 +5,7 @@ module.exports = function(app){
 
     var dadosDaEntrega = req.body;
 
-    var correiosSOAPClient = new app.servicos.correiosSOAPClient();
+    var correiosSOAPClient = new app.services.correiosSOAPClient();
     
     correiosSOAPClient.calculaPrazo(dadosDaEntrega, function(error,result){
       if(error){
