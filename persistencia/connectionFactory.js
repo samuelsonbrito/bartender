@@ -10,6 +10,4 @@ var connectMYSQL = ()=>{
 };
 
 //função wrapper
-module.exports = ()=>{
-	return connectMYSQL;
-}
+module.exports = ()=> connectMYSQL;

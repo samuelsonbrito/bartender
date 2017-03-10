@@ -20,8 +20,6 @@ class UserDAO{
 		this._connection.query('update user set status = ? where id = ?', [user.status, user.id], callback);
 	}
 
-
 }
 
 module.exports = ()=> UserDAO;
-
