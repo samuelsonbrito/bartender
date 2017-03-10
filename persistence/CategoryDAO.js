@@ -12,12 +12,12 @@ class CategoryDAO{
 		this._connection.query('select * from category where id = ?',[id], callback);
 	}
 
-	salva(user,callback){
-		this._connection.query('insert into category set ?', user, callback);
+	salva(category,callback){
+		this._connection.query('insert into category set ?', category, callback);
 	}
 
-	atualiza(user,callback){
-		this._connection.query('update category set status = ? where id = ?', [user.status, user.id], callback);
+	atualiza(category,callback){
+		this._connection.query('update category set status = ? where id = ?', [category.status, category.id], callback);
 	}
 
 

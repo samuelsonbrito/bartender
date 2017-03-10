@@ -5,7 +5,7 @@ var expressValidator = require('express-validator');
 //var morgan = require('morgan');
 //var logger = require('../servicos/logger.js');
 
-module.exports = function() {
+module.exports = ()=> {
 
   var app = express();
 /*
