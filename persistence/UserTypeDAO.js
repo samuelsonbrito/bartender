@@ -5,11 +5,11 @@ class UserTypeDAO{
 	}
 
 	lista(callback){
-		this._connection.query('select * from user_type', callback);
+		this._connection.query('select * from user_type where type_status = 1', callback);
 	}
 
 	buscaPorId(id,callback){
-		this._connection.query('select * from user_type where id = ?',[id], callback);
+		this._connection.query('select * from user_type where type_id = ? and type_status = 1',[id], callback);
 	}
 
 	salva(user,callback){
@@ -17,7 +17,11 @@ class UserTypeDAO{
 	}
 
 	atualiza(user,callback){
-		this._connection.query('update user_type set status = ? where id = ?', [user.status, user.id], callback);
+		this._connection.query('update user_type set type_desc = ? where type_id = ?', [user.type_desc, user.type_id], callback);
+	}
+
+	exclui(user, callback){
+		this._connection.query('update user_type set type_status = ? where type_id = ?', [user.type_status, user.type_id], callback);
 	}
 
 }
