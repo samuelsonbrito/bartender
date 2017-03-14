@@ -14,7 +14,7 @@ module.exports = (app)=>{
                 return;
             }
 
-            console.log('pagamento encontrado'+JSON.stringify(result));
+            console.log('tipos encontrado'+JSON.stringify(result));
             res.json(result);
 
             return;
@@ -30,12 +30,12 @@ module.exports = (app)=>{
         let id = req.params.id;
 
         dados.type_id = id;
-        dados.type_status = 0;
+
 
         let connection = app.persistence.connectionFactory();
         let userTypeDAO = new app.persistence.UserTypeDAO(connection);
 
-        userTypeDAO.exclui(dados, (err, result)=>{
+        userTypeDAO.exclui(id, (err, result)=>{
 
             if(err){
                 res.status(500).send(err);

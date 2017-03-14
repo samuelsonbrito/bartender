@@ -20,8 +20,8 @@ class UserTypeDAO{
 		this._connection.query('update user_type set type_desc = ? where type_id = ?', [user.type_desc, user.type_id], callback);
 	}
 
-	exclui(user, callback){
-		this._connection.query('update user_type set type_status = ? where type_id = ?', [user.type_status, user.type_id], callback);
+	exclui(id, callback){
+		this._connection.query('update user_type set type_status = 0 where type_id = ?', [id], callback);
 	}
 
 }
