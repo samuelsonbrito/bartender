@@ -1,5 +1,26 @@
 module.exports = (app)=>{
 
+    app.get('/categorias', (req,res)=>{
+
+        let connection = app.persistence.connectionFactory();
+        let categoryDAO = new app.persistence.CategoryDAO(connection);
+
+        categoryDAO.lista((err, result)=>{
+
+            if(err){
+                res.status(500).send(err);
+                return;
+            }
+
+            console.log('categorias encontrado'+JSON.stringify(result));
+            res.json(result);
+
+            return;
+
+        });
+
+    });
+
 
     app.get('/categorias/categoria/:id', (req,res)=>{
 
@@ -43,8 +64,32 @@ module.exports = (app)=>{
             res.send(dados);
 
             return;
-
         });    
+
+    });
+
+    app.put('/categorias/categoria/:id', (req, res)=>{
+
+        let dados = {};
+        dados.category_id = req.params.id;
+        dados.category_desc = req.body['category_desc']; 
+        dados.category_sub_id = req.body['category_sub_id'] == "" ? null : req.body['category_sub_id']; 
+
+        let connection = app.persistence.connectionFactory();
+        let categoryDAO = new app.persistence.CategoryDAO(connection);  
+
+        categoryDAO.atualiza(dados, (err, result)=>{
+
+            if(err){
+                res.status(500).send(err);
+                return;
+            }
+
+            console.log('dados atualizados'+JSON.stringify(dados));
+
+            res.send(dados);
+
+        });        
 
     });
 

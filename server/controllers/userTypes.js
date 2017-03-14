@@ -1,6 +1,27 @@
 module.exports = (app)=>{
 
-    app.get('/tiposusuario/tipousuario/:id', (req, res)=>{
+    app.get('/tiposusuarios', (req, res)=>{
+
+        let connection = app.persistence.connectionFactory();
+        let userTypeDAO = new app.persistence.UserTypeDAO(connection);
+
+        userTypeDAO.lista((err, result)=>{
+
+            if(err){
+                res.status(500).send(err);
+                return;
+            }
+
+            console.log('tipos encontrado'+JSON.stringify(result));
+            res.json(result);
+
+            return;
+
+        });
+
+    });
+
+    app.get('/tiposusuarios/tipousuario/:id', (req, res)=>{
 
         let id = req.params.id;
 

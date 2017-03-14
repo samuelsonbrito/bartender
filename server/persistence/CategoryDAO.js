@@ -17,7 +17,7 @@ class CategoryDAO{
 	}
 
 	atualiza(category,callback){
-		this._connection.query('update category set category_desc = ?, category_sub_id = ?, category_status = ? where category_id = ?', [category.category_desc, category.category_sub_id, category.category_status, category.category_id], callback);
+		this._connection.query('update category set category_desc = ?, category_sub_id = ? where category_id = ?', [category.category_desc, category.category_sub_id, category.category_id], callback);
 	}
 
 	exclui(id, callback){
