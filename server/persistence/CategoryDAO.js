@@ -5,11 +5,11 @@ class CategoryDAO{
 	}
 
 	lista(callback){
-		this._connection.query('select * from category', callback);
+		this._connection.query('select * from category where category_status = 1', callback);
 	}
 
 	buscaPorId(id,callback){
-		this._connection.query('select * from category where category_id = ?',[id], callback);
+		this._connection.query('select * from category where category_id = ? and category_status = 1',[id], callback);
 	}
 
 	salva(category,callback){

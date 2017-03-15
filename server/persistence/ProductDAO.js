@@ -5,11 +5,11 @@ class ProductDAO{
 	}
 
 	lista(callback){
-		this._connection.query('select * from product', callback);
+		this._connection.query('select * from product where product_status = 1', callback);
 	}
 
 	buscaPorId(id,callback){
-		this._connection.query('select * from product where product_id = ?',[id], callback);
+		this._connection.query('select * from product where product_id = ? and product_status = 1',[id], callback);
 	}
 
 	salva(product,callback){
