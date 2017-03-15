@@ -93,6 +93,31 @@ module.exports = (app)=>{
 
     });
 
+    app.post('/categorias/categoria', (req, res)=>{
+
+        let dados = {};
+
+        dados.category_desc = req.body['category_desc']; 
+        dados.category_sub_id = req.body['category_sub_id'] == "" ? null : req.body['category_sub_id']; 
+
+        let connection = app.persistence.connectionFactory();
+        let categoryDAO = new app.persistence.CategoryDAO(connection);  
+
+        categoryDAO.salva(dados, (err, result)=>{
+
+            if(err){
+                res.status(500).send(err);
+                return;
+            }
+
+            console.log('dados atualizados'+JSON.stringify(dados));
+
+            res.send(dados);
+
+        });        
+
+    });    
+
 
 
 }
