@@ -60,3 +60,9 @@ typings/
 # files imagens e videos
 *.jpg
 *.mp4
+# Netbeans Project
+nbproject/
+nbproject/project.properties
+nbproject/project.xml
+nbproject/private
+/nbproject/private/
