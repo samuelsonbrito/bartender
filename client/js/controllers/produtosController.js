@@ -2,11 +2,13 @@ angular.module('bartender').controller('ProdutosController', function($scope, $h
 
     $scope.produtos = [];
 
-    var promise = $http.get('http://localhost:3000/produtos');
-    promise.then(function(retorno){
-        $scope.produtos = retorno.data;
-    }).catch(function(error){
-        console.log(error);
+    $http.get('http://localhost:3000/produtos')
+    .success(function(produtos){
+        $scope.produtos = produtos;
+    })
+    .error(function(erro){
+        console.log(erro);
     });
+    
 
 });
