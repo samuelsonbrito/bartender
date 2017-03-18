@@ -11,14 +11,7 @@ angular.module('minhasDiretivas',[])
 
         ddo.transclude = true; //manter elementos filhos
 
-        ddo.template =
-                 '<div class="panel panel-default">'
-                +'  <div class="panel-heading">'
-                +'      <h3 class="panel-title">{{titulo}}</h3>'
-                +'  </div>'
-                +'  <div class="panel-body" ng-transclude>'
-                +'  </div>'
-                +'</div>';
+        ddo.templateUrl = 'js/directives/meuPainel.html';
 
         return ddo;
 
