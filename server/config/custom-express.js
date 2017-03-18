@@ -22,6 +22,15 @@ module.exports = ()=> {
   //ativar o express validator
   app.use(expressValidator());
 
+  //dar permissão de acesso
+  app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+
   consign() //fazer o uso do autoload
   .include('controllers')
   .then('persistence')
