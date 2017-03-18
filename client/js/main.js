@@ -1,1 +1,1 @@
-angular.module('bartender',[]);
+angular.module('bartender',['minhasDiretivas']);

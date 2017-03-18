@@ -9,6 +9,7 @@
         <script src="js/lib/angular.min.js"></script>
         <script src="js/main.js"></script>
         <script src="js/controllers/produtosController.js"></script>
+        <script src="js/directives/minhasDiretivas.js"></script>
     </head>
     <body ng-controller="ProdutosController">
         <div class="container">
@@ -17,14 +18,11 @@
                 <h1 class="text-center">Bartender</h1>
             </div>
 
-            <div class="panel panel-default" ng-repeat="produto in produtos">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{produto.product_name}}</h3>
-                    <div>
-                        <img class="img-responsive center-block" src="{{produto.product_photo}}" alt="{{produto.product_name}}" width="150">
-                    </div>
-                </div>
-            </div>
+            <meu-painel ng-repeat="produto in produtos" titulo="{{produto.product_name}}">
+                                       
+                <img class="img-responsive center-block" src="{{produto.product_photo}}" alt="{{produto.product_name}}" width="150">
+                    
+            </meu-painel>
   
         </div> <!-- fim container -->        
     </body>
